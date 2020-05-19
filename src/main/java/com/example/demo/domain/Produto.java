@@ -34,6 +34,7 @@ public class Produto implements Serializable {
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.produto")
 	private Set<ItemPedido> itens = new HashSet<>();
 
@@ -48,12 +49,19 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
+	@JsonIgnore
 	public List<Pedido> getPedidos() {
+		List<Pedido> lista = new ArrayList<>();
+
+		for (ItemPedido ip : itens) {
+			lista.add(ip.getPedido());
+		}
+		return lista;
 		
-		return itens.stream().map(i -> i.getPedido()).collect(Collectors.toList());
+		//return itens.stream().map(i -> i.getPedido()).collect(Collectors.toList());
 
 	}
-		
+
 	public Set<ItemPedido> getItens() {
 		return itens;
 	}
