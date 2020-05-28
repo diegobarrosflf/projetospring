@@ -74,6 +74,8 @@ public class ProjetospringApplication implements CommandLineRunner {
 		Categoria cat3 = new Categoria(null, "Cozinha");
 		Categoria cat4 = new Categoria(null, "TV");
 		Categoria cat5 = new Categoria(null, "Games");
+		Categoria cat6 = new Categoria(null, "Jardim");
+		Categoria cat7 = new Categoria(null, "Material escolar");
 		
 
 		Produto p1 = new Produto(null, "notebook_DELL", 1500.00);
@@ -94,7 +96,7 @@ public class ProjetospringApplication implements CommandLineRunner {
 		p4.getCategorias().addAll(Arrays.asList(cat4));
 		p5.getCategorias().addAll(Arrays.asList(cat5));
 
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
 		Estado est1 = new Estado(null, "Ceará");
